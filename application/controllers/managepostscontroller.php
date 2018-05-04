@@ -20,7 +20,7 @@ class ManagePostsController extends Controller{
 	
 	public function save(){
 		$this->postObject = new Post();
-		$data = array('title'=>$_POST['title'],'content'=>$_POST['content'],'category'=>$_POST['category'],'date'=>$_POST['date']);
+		$data = array('title'=>$_POST['title'],'content'=>$_POST['content'],'category'=>$_POST['category'],'date'=>$_POST['date'], 'uID'=>$_SESSION['uID']);
 		//$this->getCategories();
 			
 		$result = $this->postObject->addPost($data);
@@ -60,7 +60,7 @@ class ManagePostsController extends Controller{
 	}
 
 	public function delete(){
-	    $this->postObject = new Posts();
+	    $this->postObject = new Post();
 	    $result = $this->postObject->deletePost($_GET['pID']);
 	    $this->set('message', $result);
     }

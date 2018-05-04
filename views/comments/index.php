@@ -7,8 +7,6 @@
     <div class="container">
 
         <form action="<?php echo BASE_URL?>comments/addComment" method="post" onsubmit="editor.post()">
-            <label for="date">Date</label>
-            <label>Comment</label>
             <textarea id="tinyeditor" name="commentText" style="width:556px;height: 200px"></textarea>
             <input type="hidden" name="pID" value="<?php echo $pID;?>"/>
             <input type="hidden" name="uID" value="<?php echo $_SESSION['uID'];?>"/>

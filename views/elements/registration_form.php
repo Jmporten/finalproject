@@ -16,8 +16,12 @@
 
 <label for="password">Password: <?=REQFIELD?></label>
 <input type="password" class="txt" id="password" name="password" value="<?php echo $password;?>" maxlength="100" required="password" />
-
 <br />
+
+<label for="repassword">Retype Password: <?=REQFIELD?></label>
+<input type="password" class="txt" id="repassword" name="repassword" value="<?php echo $repassword;?>" maxlength="100" required="repassword" />
+<br />
+
 
 <input type="hidden" name="uID" value="<?php echo $uID ?>"/>
  

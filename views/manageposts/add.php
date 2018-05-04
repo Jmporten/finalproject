@@ -24,7 +24,7 @@
                     <?php // set timezone
                     date_default_timezone_set('America/Indiana/Indianapolis'); ?>
                     <input name="date" id="date" size="16" type="date"
-                           value="<?php echo $date = date('Y-m-d H:i:s'); ?>">
+                           value="<?php echo $date = date('Y-m-d H:i:s'); ?>" required="date">
 
                     <label for="category">Category</label>
                     <select class="input-sm" name="category" id="category" required="category">
@@ -45,7 +45,7 @@
 
                     <label>Content</label>
                     <textarea id="tinyeditor" name="content"
-                              style="width:556px;height: 200px"><?php echo $content ?></textarea>
+                              style="width:556px;height: 200px" required="content"><?php echo $content ?></textarea>
                     <br/>
                     <input type="hidden" name="pID" value="<?php echo $pID ?>"/>
 

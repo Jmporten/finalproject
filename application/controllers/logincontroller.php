@@ -12,19 +12,21 @@ class LoginController extends Controller{
        if($this->userObject->checkUser($_POST['email'],$_POST['password'])) {
 
            $userInfo = $this->userObject->getUserFromEmail($_POST['email']);
-
-           $_SESSION['uID'] = $userInfo['uID'];
-
-          if(strlen($_SESSION['redirect']) > 0 ) {
-              $view = $_SESSION['redirect'];
-              unset($_SESSION['redirect']);
-              header('Location: '.BASE_URL.$view);
-          }
-           else {
-               header('Location: '.BASE_URL);
+            $active = $this->userObject->isActive($userInfo['uID']);
+           if($active == 1){
+               $_SESSION['uID'] = $userInfo['uID'];
+               if (strlen($_SESSION['redirect']) > 0) {
+                   $view = $_SESSION['redirect'];
+                   unset($_SESSION['redirect']);
+                   header('Location: ' . BASE_URL . $view);
+               } else {
+                   header('Location: ' . BASE_URL);
+               }
+            }elseif($active == 0){
+               $this->set('error','User has not been activated. Waiting Approval.');
+           }else{
+               $this->set('error','Invalid user.');
            }
-
-
 
 
        }

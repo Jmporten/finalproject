@@ -17,12 +17,27 @@ include('views/elements/header.php');?>
             commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
             nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
             anim id est laborum.</p>
-    </div>
     <?php if(!$u->isRegistered()){?>
     <h5>Register For My Page</h5>
     <button>
         <a href="http://corsair.cs.iupui.edu:22771/CIT313/SP2018/final/register/">Register</a>
     </button>
     <?php }?>
+    </div>
+    <div id="weather">
+        <h4>Get your local weather</h4>
+        <h6>Enter your zip code below</h6>
+
+
+        <form id="weather_form" method="post" action="<?php echo BASE_URL?>weather/getresults">
+
+            <input type="text" name="zip" id="zip" required="zip">
+            <br>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">View Weather</button>
+
+        </form>
+    </div>
 </div>
 <?php include('views/elements/footer.php');?>

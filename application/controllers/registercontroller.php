@@ -13,12 +13,18 @@ class RegisterController extends Controller{
 		$this->userObject = new Users();
 
         $password = $_POST['password'];
-        $passhash = password_hash($password,PASSWORD_DEFAULT);
+        $repassword = $_POST['repassword'];
 
-		$data = array('first_name'=>$_POST['first_name'],'last_name'=>$_POST['last_name'],'email'=>$_POST['email'],'password'=>$passhash);
-			
-		$this->userObject->addUser($data);
-		$this->set('message', 'Thanks for registering!');
+        if($password == $repassword) {
+            $passhash = password_hash($password, PASSWORD_DEFAULT);
+
+            $data = array('first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name'], 'email' => $_POST['email'], 'password' => $passhash);
+
+            $this->userObject->addUser($data);
+            $this->set('message', 'Thanks for registering!');
+        } else{
+            $this->set('message', 'Passwords do not match.');
+        }
 	}
 	
 }

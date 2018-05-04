@@ -128,5 +128,10 @@ class Users extends Model{
 
     }
 
+    public function isActive($uID){
+	    $sql = 'SELECT active FROM users WHERE uID = ?';
+	    $results = $this->db->getrow($sql, array($uID));
+	    return $results['active'];
+    }
 	
 }
